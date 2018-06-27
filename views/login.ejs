@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<title>MaxE-Login</title>
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+	</head>
+
+	<body>
+		<% if (message.length > 0) { %>
+				<center id="warns"><i class="fa fa-exclamation-circle"></i> <%= message %> </center>
+			<% } %>
+		<style>
+		 @import url('https://fonts.googleapis.com/css?family=Ubuntu:300');
+		 #warns {
+			 color: #FF5A00;
+
+		 }
+		body {
+		background: #303C4A;
+		color: #EDEDED;
+		font-family: 'Roboto', sans-serif;
+		}
+
+		h2 {
+		color: #EDEDED;
+		font-size: 15px;
+		font-weight: 600;
+		text-align: center;
+		margin-bottom: 10px;
+		}
+
+		a {
+		color: #EDEDED;
+		text-decoration: none;
+		}
+
+		.image{
+			position: absolute;
+			top: -16%;
+			left: 17%;
+		}
+
+		.login {
+		width: 250px;
+		position: absolute;
+		top: 56%;
+		left: 50%;
+		margin: -184px 0px 0px -155px;
+		background: rgba(0,0,0,0.2);
+		padding: 20px 30px;
+		border-radius: 5px;
+		box-shadow: 0px 1px 0px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07)
+		height: auto;
+		}
+
+		input[type="text"], input[type="password"] {
+		width: 250px;
+		padding: 25px 0px;
+		background: transparent;
+		border: 0;
+		border-bottom: 1px solid rgba(255,255,255,0.04);
+		outline: none;
+		color: #EDEDED;
+		}
+		input[type=checkbox] {
+		display: none;
+		}
+
+		label {
+		display: block;
+		position: absolute;
+		margin-top: 2px;
+		width: 4px;
+		height: 4px;
+		border-radius: 50%;
+		background: #46485c;
+		content: "";
+		transition: all 0.3s ease-in-out;
+		cursor: pointer;
+		border: 3px solid #252730;
+		box-shadow: 0px 0px 0px 2px #46485c;
+		}
+
+		#remember:checked ~ label[for=remember] {
+		background: #FF5A00;
+		border: 3px solid #252730;
+		box-shadow: 0px 0px 0px 2px #FF5A00;
+		}
+
+
+		input[type="submit"] {
+		background: #FF5A00;
+		border: 0;
+		width: 250px;
+		height: 40px;
+		border-radius: 3px;
+		color: white;
+		cursor: pointer;
+		transition: background 0.3s ease-in-out;
+		}
+		input[type="submit"]:hover {
+		background: #252730;
+		}
+
+		.forgot {
+		margin-top: 30px;
+		display: block;
+		font-size: 11px;
+		text-align: center;
+		font-weight: bold;
+
+		}
+		.forgot:hover {
+		margin-top: 30px;
+		display: block;
+		font-size: 11px;
+		text-align: center;
+		font-weight: bold;
+		color: #FF5A00;
+		}
+
+		.remember {
+		padding: 30px 0px;
+		font-size: 12px;
+		text-indent: 25px;
+		line-height: 15px;
+		}
+
+		::-webkit-input-placeholder {
+		color: #fff;
+		}
+
+		[placeholder]:focus::-webkit-input-placeholder {
+		transition: all 0.2s linear;
+		transform: translate(10px, 0);
+		opacity: 0;
+		}
+		</style>
+
+<!-- Returns auth errors-->
+
+<!---------->
+
+<form method="post">
+	<div class='login'>
+	<img src="/img/maxe_logo.png" class="image">
+	  <h2>Sign In</h2>
+
+	  <input name='email' placeholder='Email' type='text'/>
+	  <input id='pw' name='password' placeholder='Password' type='password'/>
+	  <div class='remember'>
+	    <input checked='' id='remember' name='remember' type='checkbox'/>
+	    <label for='remember'></label>Remember me
+	  </div>
+	  <input type='submit' value='Sign in'/>
+	  <a class='forgot' href='#'>Forgot your password?</a>
+		<a class='forgot' href='signup'>Need an Account ?</a>
+	</div>
+</form>
+
+
+
+<script type="text/javascript">
+//show password
+$(document).ready(function(){
+	$("#pw").focus(function(){
+			this.type = "text";
+	}).blur(function(){
+			this.type = "password";
+	})
+});
+
+//Placeholder fixed for Internet Explorer
+$(function() {
+	var input = document.createElement("input");
+	if(('placeholder' in input)==false) {
+			$('[placeholder]').focus(function() {
+					var i = $(this);
+					if(i.val() == i.attr('placeholder')) {
+							i.val('').removeClass('placeholder');
+							if(i.hasClass('password')) {
+									i.removeClass('password');
+									this.type='password';
+							}
+					}
+			}).blur(function() {
+					var i = $(this);
+					if(i.val() == '' || i.val() == i.attr('placeholder')) {
+							if(this.type=='password') {
+									i.addClass('password');
+									this.type='text';
+							}
+							i.addClass('placeholder').val(i.attr('placeholder'));
+					}
+			}).blur().parents('form').submit(function() {
+					$(this).find('[placeholder]').each(function() {
+							var i = $(this);
+							if(i.val() == i.attr('placeholder'))
+									i.val('');
+					})
+			});
+	}
+	});
+</script>
+	</body>
+</html>

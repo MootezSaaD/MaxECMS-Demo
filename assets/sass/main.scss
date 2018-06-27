@@ -1,0 +1,100 @@
+@import url( 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
+@import "reset";
+@import "variables";
+@import "content-area";
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  background: $grayLight;
+}
+#SideMenu {
+  background: $darkPurple;
+  max-width: 620px;
+  width: 280px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+ nav {
+   padding-top: 100px;
+   a{
+     display: block;
+     color: white;
+     text-decoration: none;
+     padding: 15px 30px;
+     font-weight: 300;
+     transition: all 0.3s ease-in-out ;
+
+     &:hover{
+       background: $darkBlue;
+       border-left: 5px solid $darkBlue;
+       .fa{
+         color: $lightOrange;
+       }
+     }
+     .fa {
+       color: $grayLight;
+       font-size: 1.4rem;
+       margin-right: 0.8rem;
+       display: inline-block;
+       width: 30px;
+       position: relative;
+       top: 2px;
+     }
+
+
+    &.active{
+      background: $darkBlue;
+      border-left: 5px solid $lightOrange;
+      padding: 15px 30px 15px 25px;
+      .fa{
+        color: $lightOrange;
+      }
+    }
+   }
+ }
+  }
+
+  header{
+    margin-left: 280px;
+    padding: 10px;
+    background: $allwhite;
+    .search_area{
+      display: inline-block;
+      width: 50%;
+
+      .fa{
+        color: $darkBlue;
+      }
+      input[type="text"] {
+        background: transparent;
+        border: none;
+        fun-size: 1.3rem;
+        color: $lightOrange;
+        padding: 10;
+        font-weight: 100;
+        width: 80%;
+        transition: all 0.3s ease-in-out;
+        &:hover{
+          background: $grayLight;
+        }
+      }
+
+    }
+    .user_area{
+      display: inline-block;
+      float: right;
+      padding: 10px;
+      a{
+        display: inline-block;
+        padding-right: 20px;
+        text-decoration: none;
+        &.notification{
+          position: relative;
+        }
+
+      }
+
+    }
+  }

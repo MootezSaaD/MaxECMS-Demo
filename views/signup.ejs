@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<title>MaxE-Signup</title>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+	</head>
+	<style>
+
+
+	 @import url('https://fonts.googleapis.com/css?family=Ubuntu:300');
+	body {
+	background: #303C4A;
+	color: #EDEDED;
+	font-family: 'Roboto', sans-serif;
+	}
+
+	h2 {
+	color: #EDEDED;
+	font-size: 15px;
+	font-weight: 600;
+	text-align: center;
+	margin-bottom: 10px;
+	}
+
+	#warns {
+		color: #FF5A00;
+
+	}
+
+	a {
+	color: #EDEDED;
+	text-decoration: none;
+	}
+
+	.image{
+		position: absolute;
+		top: -16%;
+		left: 17%;
+	}
+
+	.register {
+	width: 250px;
+	position: absolute;
+	top: 56%;
+	left: 50%;
+	margin: -184px 0px 0px -155px;
+	background: rgba(0,0,0,0.2);
+	padding: 20px 30px;
+	border-radius: 5px;
+	box-shadow: 0px 1px 0px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07)
+	height: auto;
+	}
+
+
+
+	input[type="text"], input[type="password"], input[type="email"] {
+	width: 250px;
+	padding: 25px 0px;
+	background: transparent;
+	border: 0;
+	border-bottom: 1px solid rgba(255,255,255,0.04);
+	outline: none;
+	color: #EDEDED;
+	}
+
+
+
+
+
+
+	input[type="submit"] {
+	background: #FF5A00;
+	border: 0;
+	width: 250px;
+	height: 40px;
+	border-radius: 3px;
+	color: white;
+	cursor: pointer;
+	transition: background 0.3s ease-in-out;
+	}
+	input[type="submit"]:hover {
+	background: #252730;
+	}
+
+	.alr_acc {
+	margin-top: 30px;
+	display: block;
+	font-size: 11px;
+	text-align: center;
+	font-weight: bold;
+
+	}
+	.alr_acc:hover {
+	margin-top: 30px;
+	display: block;
+	font-size: 11px;
+	text-align: center;
+	font-weight: bold;
+	color: #FF5A00;
+	}
+
+
+
+	::-webkit-input-placeholder {
+	color: #fff;
+	}
+
+	[placeholder]:focus::-webkit-input-placeholder {
+	transition: all 0.2s linear;
+	transform: translate(10px, 0);
+	opacity: 0;
+	}
+
+	.error {
+	    color: #FF5A00;
+			font-size: 12px;
+
+	  }
+	</style>
+
+	<body>
+
+
+
+		<% if (message.length > 0) { %>
+				<center id="warns"><i class="fa fa-exclamation-circle"></i><%= message %></center>
+			<% } %>
+
+<form id="register" method="post" action="signup" name="registration">
+	<div class='register'>
+	<img src="/img/maxe_logo.png" class="image">
+	  <h2>Sign Up</h2>
+
+	  <input id="name" name='name' placeholder='Name' type='text' />
+	  <input id="email" type="email" id="email" name='email' placeholder='Email' type='text' />
+
+	  <input id='pw' id="password" name='password' placeholder='Password' type='password' />
+		<input id='pw2' id="password2" name='password2' placeholder='Confirm Password'type="password" />
+
+		<input type='submit' value='Sign up'/>
+
+		<a class='alr_acc' href='login'>Already Have an Account?</a>
+	</div>
+
+</form>
+
+
+<script type="text/javascript">
+
+//validation
+//Only Medtech Emails:
+$(document).ready(function () {
+
+    jQuery.validator.addMethod('medtech', function (value, element) {
+        return this.optional(element) || /^[a-z0-9](\.?[a-z0-9]){5,}@medtech\.tn/i.test(value);
+    }, "Only MedTech emails are accepted");
+
+    $('#register').validate({
+				rules: {
+					// The key name on the left side is the name attribute
+					// of an input field. Validation rules are defined
+					// on the right side
+					name: "required",
+					email: {
+							required: true,
+							medtech: true
+					},
+					password: {
+						required: true,
+						minlength: 5
+					}
+				},
+				// Specify validation error messages
+
+        submitHandler: function (form) { // for demo
+
+            form.submit();
+        }
+    });
+
+});
+
+
+//show password
+$(document).ready(function(){
+	$("#pw").focus(function(){
+			this.type = "text";
+	}).blur(function(){
+			this.type = "password";
+	})
+});
+
+//Placeholder fixed for Internet Explorer
+$(function() {
+	var input = document.createElement("input");
+	if(('placeholder' in input)==false) {
+			$('[placeholder]').focus(function() {
+					var i = $(this);
+					if(i.val() == i.attr('placeholder')) {
+							i.val('').removeClass('placeholder');
+							if(i.hasClass('password')) {
+									i.removeClass('password');
+									this.type='password';
+							}
+					}
+			}).blur(function() {
+					var i = $(this);
+					if(i.val() == '' || i.val() == i.attr('placeholder')) {
+							if(this.type=='password') {
+									i.addClass('password');
+									this.type='text';
+							}
+							i.addClass('placeholder').val(i.attr('placeholder'));
+					}
+			}).blur().parents('form').submit(function() {
+					$(this).find('[placeholder]').each(function() {
+							var i = $(this);
+							if(i.val() == i.attr('placeholder'))
+									i.val('');
+					})
+			});
+	}
+	});
+
+
+
+</script>
+
+
+	</body>
+</html>
