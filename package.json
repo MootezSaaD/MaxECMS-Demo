@@ -1,5 +1,5 @@
 {
-  "name": "node-authentication",
+  "name": "MaxECMS-Demo",
   "main": "server.js",
   "scripts": {
     "start": "node ./server"
