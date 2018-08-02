@@ -9,6 +9,10 @@ body {
   font-family: 'Roboto', sans-serif;
   background: $grayLight;
 }
+
+#greeting {
+    text-decoration-color: $darkOrange;
+}
 #SideMenu {
   background: $darkPurple;
   max-width: 620px;
@@ -33,6 +37,7 @@ body {
          color: $lightOrange;
        }
      }
+
      .fa {
        color: $grayLight;
        font-size: 1.4rem;
@@ -62,7 +67,7 @@ body {
     background: $allwhite;
     .search_area{
       display: inline-block;
-      width: 50%;
+      width: 70%;
 
       .fa{
         color: $darkBlue;
@@ -72,9 +77,9 @@ body {
         border: none;
         fun-size: 1.3rem;
         color: $lightOrange;
-        padding: 10;
+        padding: 10px;
         font-weight: 100;
-        width: 80%;
+        width: 100%;
         transition: all 0.3s ease-in-out;
         &:hover{
           background: $grayLight;
@@ -98,3 +103,5 @@ body {
 
     }
   }
+
+  

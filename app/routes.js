@@ -65,7 +65,35 @@ module.exports = function(app, passport) {
 			user : req.user // get the user out of session and pass to template
 		});
 	});
-
+	app.get('/midterms', isLoggedIn, function(req, res) {
+		res.render('midterms.ejs', {
+			user : req.user // get the user out of session and pass to template
+		});
+	});
+	//Settings
+	app.get('/settings', isLoggedIn, function(req, res) {
+		res.render('settings.ejs', {
+			user : req.user // get the user out of session and pass to template
+		});
+	});
+//Schedule
+app.get('/schedule', isLoggedIn, function(req, res) {
+	res.render('schedule.ejs', {
+		user : req.user // get the user out of session and pass to template
+	});
+});
+//Community
+app.get('/community', isLoggedIn, function(req, res) {
+	res.render('community.ejs', {
+		user : req.user // get the user out of session and pass to template
+	});
+});
+//Contact
+app.get('/contact', isLoggedIn, function(req, res) {
+	res.render('contact.ejs', {
+		user : req.user // get the user out of session and pass to template
+	});
+});
 	// =====================================
 	// LOGOUT ==============================
 	// =====================================

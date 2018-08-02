@@ -8,3 +8,9 @@ It is a simple direct application of tutorials and lessons that we have seen abo
 
 PS: Please if you want to add something or have suggestion please do not hesitate, our goal is to improve this platform and maybe,
 one day, deploy for other universities.
+
+Acknowledgement:
+  * Traversery Media.
+  * manjeshpv.
+  * MDB.
+  * CodingPhase.
