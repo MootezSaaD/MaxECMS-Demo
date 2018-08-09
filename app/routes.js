@@ -1,7 +1,7 @@
 // app/routes.js
 
 
-module.exports = function(app, passport) {
+module.exports = function(app,passport) {
 
 	// =====================================
 	// HOME PAGE (with login links) ========
@@ -76,6 +76,10 @@ module.exports = function(app, passport) {
 			user : req.user // get the user out of session and pass to template
 		});
 	});
+	//Uploads folder
+
+
+
 //Schedule
 app.get('/schedule', isLoggedIn, function(req, res) {
 	res.render('schedule.ejs', {
@@ -102,6 +106,8 @@ app.get('/contact', isLoggedIn, function(req, res) {
 		res.redirect('/');
 	});
 };
+
+
 
 // route middleware to make sure
 function isLoggedIn(req, res, next) {

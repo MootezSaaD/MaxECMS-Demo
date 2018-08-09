@@ -1094,3 +1094,8 @@ body {
   <a href="files/mydoc.pdf" target="_blank" class="back">First chapter of my new book!</a>
    <a href="files/mydoc.pdf" target="_blank" class="back">First chapter of my new book!</a>
     <a href="files/mydoc.pdf" target="_blank" class="back">First chapter of my new book!</a>
+    <%= typeof msg != 'undefined' ? msg : '' %>
+    <form action="/upload" enctype="multipart/form-data" method="POST">
+  <input type="file" name="pdf" />
+  <input type="submit" value="Upload File"/>
+</form>

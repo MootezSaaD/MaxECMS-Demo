@@ -7,7 +7,7 @@ http.createServer(function (req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
       var oldpath = files.filetoupload.path;
-      var newpath = '/Users/waelbenamara/Desktop/' + files.filetoupload.name;
+      var newpath = 'C:\\Users\\MOOTEZ\\Cisco Packet Tracer 7.1.1\\saves\\' + files.filetoupload.name;
       fs.rename(oldpath, newpath, function (err) {
         if (err) throw err;
         res.write('File uploaded and moved!');

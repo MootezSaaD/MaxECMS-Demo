@@ -12,6 +12,7 @@ var port     = process.env.PORT || 8080;
 var path = require('path');
 var passport = require('passport');
 var flash    = require('connect-flash');
+var multer = require('multer');
 
 
 // configuration ===============================================================
@@ -40,11 +41,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-
 app.use(express.static(path.join(__dirname, 'public')));// Static folder
+app.use(express.static(path.join(__dirname, 'uploads')));//UploadsFolder
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-
+require('./app/multer_routes.js')(app, multer);
 // launch ======================================================================
 app.listen(port);
 console.log('The magic happens on port ' + port);
