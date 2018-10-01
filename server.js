@@ -43,9 +43,16 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 app.use(express.static(path.join(__dirname, 'public')));// Static folder
 app.use(express.static(path.join(__dirname, 'uploads')));//UploadsFolder
+app.use(express.static(path.join(__dirname, 'uploads/mids')));//UploadsFolder
+app.use(express.static(path.join(__dirname, 'uploads/finals')));
+app.use(express.static(path.join(__dirname, 'uploads/bks')));
+app.use(express.static(path.join(__dirname, 'uploads/qzs')));
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-require('./app/multer_routes.js')(app, multer);
+require('./app/multer_routes_bks.js')(app, multer);
+require('./app/multer_routes_mids.js')(app, multer);
+require('./app/multer_routes_finals.js')(app, multer);
+require('./app/multer_routes_qzs.js')(app, multer);
 // launch ======================================================================
 app.listen(port);
 console.log('The magic happens on port ' + port);

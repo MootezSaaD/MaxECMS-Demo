@@ -13,6 +13,7 @@ function checkFileType(file, cb){
   // Check mime
   const mimetype = filetypes.test(file.mimetype);
 
+
   if(mimetype && extname){
     return cb(null,true);
   } else {
@@ -20,7 +21,7 @@ function checkFileType(file, cb){
   }
 }
 var storage = multer.diskStorage({
-    destination: './public/uploads/',
+    destination: './public/uploads/bks/',
     filename: function(req,file,cb) {
       cb(null,file.originalname);
     }
@@ -37,25 +38,26 @@ const upload = multer({
   }
 }).single('pdf');
 
-app.post('/upload', (req, res) => {
+app.post('/upload_bks', (req, res) => {
   upload(req, res, (err) => {
     if(err){
-      res.render('midterms', {
+      res.render('upload_bks', {
         msg: err
       });
     } else {
       if(req.file == undefined){
-        res.render('midterms', {
+        res.render('upload_bks', {
           msg: 'Error: No File Selected!'
         });
       } else {
-        res.render('midterms', {
-          msg: 'File Uploaded!',
-          file: `uploads/${req.file.filename}`
+        res.render('upload_bks', {
+          msg: 'File Uploaded!'
         });
       }
     }
   });
 });
+
+
 
 };

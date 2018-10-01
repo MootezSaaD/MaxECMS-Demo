@@ -65,8 +65,39 @@ module.exports = function(app,passport) {
 			user : req.user // get the user out of session and pass to template
 		});
 	});
+	//================================
+	app.get('/upload_qzs', isLoggedIn, function(req, res) {
+		res.render('upload_qzs.ejs', {
+			user : req.user // get the user out of session and pass to template
+		});
+	});
+	//================================
+	app.get('/upload_bks', isLoggedIn, function(req, res) {
+		res.render('upload_bks.ejs', {
+			user : req.user // get the user out of session and pass to template
+		});
+	});
+	//================================
+	app.get('/upload_mids', isLoggedIn, function(req, res) {
+		res.render('upload_mids.ejs', {
+			user : req.user // get the user out of session and pass to template
+		});
+	});
+	//================================
+	app.get('/upload_finals', isLoggedIn, function(req, res) {
+		res.render('upload_finals.ejs', {
+			user : req.user // get the user out of session and pass to template
+		});
+	});
+	//================================
 	app.get('/midterms', isLoggedIn, function(req, res) {
 		res.render('midterms.ejs', {
+			user : req.user // get the user out of session and pass to template
+		});
+	});
+	//FileManager
+	app.get('/filemanager', isLoggedIn, function(req, res) {
+		res.render('filemanager.ejs', {
 			user : req.user // get the user out of session and pass to template
 		});
 	});
